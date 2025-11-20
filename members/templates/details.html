@@ -1,0 +1,219 @@
+{% extends "master.html" %}
+
+{% block title %}
+Perfil: {{ mymember.firstname }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Usamos el fondo de la plantilla maestra */
+    .profile-section-solid {
+        padding: 60px 20px;
+        background: var(--background-cemento); 
+        min-height: 70vh;
+    }
+
+    .profile-container-solid {
+        max-width: 850px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* Botón de regreso - Adaptado al estilo sólido */
+    .back-button-solid {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: var(--line-white);
+        border: 2px solid var(--primary-red);
+        border-radius: 4px;
+        color: var(--primary-red);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 0 0 var(--accent-gold); 
+    }
+
+    .back-button-solid:hover {
+        background: var(--primary-red);
+        color: var(--line-white);
+        box-shadow: 0 6px 0 0 var(--accent-gold);
+        transform: translateY(-2px);
+    }
+
+    /* Tarjeta de perfil - Diseño limpio y con líneas fuertes */
+    .profile-card-solid {
+        background: var(--line-white);
+        border: 1px solid var(--accent-gold);
+        border-radius: 6px;
+        padding: 50px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        animation: cardSlideIn 0.8s ease-out;
+    }
+
+    @keyframes cardSlideIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header del perfil */
+    .profile-header-solid {
+        text-align: left;
+        margin-bottom: 40px;
+        border-bottom: 3px solid var(--primary-red);
+        padding-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    /* Avatar Sólido y Simple (Inicial) */
+    .profile-avatar-solid {
+        width: 100px;
+        height: 100px;
+        background: var(--secondary-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--line-white);
+        flex-shrink: 0;
+        border: 5px solid var(--accent-gold);
+    }
+
+    .profile-name-solid {
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--secondary-blue);
+        margin: 0;
+        letter-spacing: -0.5px;
+    }
+
+    .profile-subtitle-solid {
+        font-size: 1.2em;
+        color: var(--primary-red);
+        font-weight: 500;
+        margin-top: 5px;
+    }
+
+    /* Información del perfil - Diseño en cuadrícula para más organización */
+    .profile-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+    }
+
+    .info-item-solid {
+        background: var(--background-cemento);
+        border-left: 5px solid var(--accent-gold);
+        border-radius: 4px;
+        padding: 20px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: background 0.3s ease;
+    }
+
+    .info-item-solid:hover {
+        background: #e8e8e8;
+    }
+
+    .info-icon-solid {
+        font-size: 24px;
+        color: var(--primary-red);
+        flex-shrink: 0;
+    }
+
+    .info-label-solid {
+        font-size: 13px;
+        color: var(--text-dark);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 3px;
+    }
+
+    .info-value-solid {
+        font-size: 18px;
+        color: var(--secondary-blue);
+        font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .profile-card-solid {
+            padding: 30px;
+        }
+        .profile-header-solid {
+            flex-direction: column;
+            text-align: center;
+        }
+        .profile-name-solid {
+            font-size: 30px;
+        }
+        .profile-info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="profile-section-solid">
+    <div class="profile-container-solid">
+        <a href="/members" class="back-button-solid">← Volver al Directorio</a>
+
+        <div class="profile-card-solid">
+            <div class="profile-header-solid">
+                <div class="profile-avatar-solid">
+                    {{ mymember.firstname|first|upper }}
+                </div>
+                <div>
+                    <h1 class="profile-name-solid">{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+                    <p class="profile-subtitle-solid">Miembro Activo del Club</p>
+                </div>
+            </div>
+
+            <div class="profile-info-grid">
+                <div class="info-item-solid">
+                    <div class="info-icon-solid">📞</div>
+                    <div class="info-content-solid">
+                        <div class="info-label-solid">Teléfono</div>
+                        <div class="info-value-solid">{{ mymember.phone }}</div>
+                    </div>
+                </div>
+
+                <div class="info-item-solid">
+                    <div class="info-icon-solid">📅</div>
+                    <div class="info-content-solid">
+                        <div class="info-label-solid">Miembro desde</div>
+                        <div class="info-value-solid">{{ mymember.joined_date }}</div>
+                    </div>
+                </div>
+
+                <div class="info-item-solid">
+                    <div class="info-icon-solid">🆔</div>
+                    <div class="info-content-solid">
+                        <div class="info-label-solid">Documento</div>
+                        <div class="info-value-solid">{{ mymember.Documento }}</div>
+                    </div>
+                </div>
+
+                <div class="info-item-solid">
+                    <div class="info-icon-solid">✉️</div>
+                    <div class="info-content-solid">
+                        <div class="info-label-solid">Email</div>
+                        <div class="info-value-solid">{{ mymember.email }}</div>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

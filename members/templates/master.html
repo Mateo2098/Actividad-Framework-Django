@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Club de Tenis Prestigio{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* 🎨 Variables de Color "Cemento y Arcilla" */
+    :root {
+      --primary-red: #A34E39; /* Color Arcilla/Tierra Batida Oscura */
+      --secondary-blue: #0A3D62; /* Azul profundo (como la red o líneas) */
+      --background-cemento: #EEEEEE; /* Fondo Gris Cemento Claro */
+      --text-dark: #333333;
+      --line-white: #FFFFFF;
+      --accent-gold: #C0A04C; /* Toque dorado/bronce para prestigio */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto Slab', serif; /* Fuente con serifa para formalidad */
+      background: var(--background-cemento);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* 🥅 ENCABEZADO TIPO FACHADA */
+    .hero-prestige {
+      width: 100%;
+      background: var(--secondary-blue);
+      color: var(--line-white);
+      padding: 70px 40px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-prestige h1 {
+      margin: 0;
+      font-size: 3.8em;
+      font-weight: 800;
+      letter-spacing: 2px;
+      border-bottom: 3px solid var(--accent-gold);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .hero-prestige p {
+      margin-top: 15px;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    /* 📏 NAVBAR LINEAL Y SOLEMNE */
+    .navbar-prestige {
+      background: var(--line-white);
+      padding: 18px 0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      border-bottom: 5px solid var(--primary-red);
+    }
+
+    .nav-link-prestige {
+      text-decoration: none;
+      color: var(--secondary-blue);
+      font-weight: 600;
+      font-size: 1.05em;
+      padding: 10px 15px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link-prestige:hover {
+      color: var(--primary-red);
+      border-bottom: 2px solid var(--primary-red);
+      transform: translateY(-2px);
+    }
+    
+    /* 📋 CONTENIDO CENTRAL */
+    .content-prestige {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 30px;
+      min-height: 50vh;
+    }
+
+    /* 🏛️ TARJETAS CON BORDE FUERTE */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .card-prestige {
+      background: var(--line-white);
+      padding: 35px;
+      border-radius: 4px;
+      box-shadow: 0 4px 0 0 var(--primary-red); /* Sombra fuerte abajo */
+      border: 1px solid var(--accent-gold);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-prestige h3 {
+      color: var(--secondary-blue);
+      border-left: 5px solid var(--accent-gold);
+      padding-left: 10px;
+      margin-top: 0;
+    }
+    
+    .card-prestige:hover {
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 0 0 var(--primary-red); /* El borde se eleva con la tarjeta */
+    }
+
+    /* 📜 FOOTER CON SOLIDEZ */
+    footer-prestige {
+      text-align: center;
+      padding: 30px;
+      margin-top: 80px;
+      background: var(--secondary-blue);
+      color: var(--accent-gold);
+      font-size: 0.9em;
+      font-weight: 500;
+      border-top: 5px solid var(--primary-red);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero-prestige">
+    <h1>CLUB DE TENIS <span style="color: var(--accent-gold);">ROYAL</span></h1>
+    <p>Tradición, Excelencia y la Pasión por la Arcilla</p>
+  </div>
+
+  <div class="navbar-prestige">
+    <a href="/" class="nav-link-prestige">Inicio</a>
+    <a href="/historia" class="nav-link-prestige">Historia</a>
+    <a href="/pistas" class="nav-link-prestige">Pistas y Servicios</a>
+    <a href="/registro" class="nav-link-prestige">Registro</a>
+  </div>
+
+  <div class="content-prestige">
+    {% block content %}
+      <h2>🎾 Bienvenido a la Tradición</h2>
+      <div class="card-container">
+        <div class="card-prestige">
+          <h3>La Cancha Central</h3>
+          <p>Nuestra pista de arcilla principal, sede de los torneos más prestigiosos de la región.</p>
+        </div>
+        <div class="card-prestige">
+          <h3>Academia Juvenil</h3>
+          <p>Formación de campeones con entrenadores certificados y programas personalizados.</p>
+        </div>
+        <div class="card-prestige">
+          <h3>Eventos Sociales</h3>
+          <p>Calendario de cenas, galas y actividades exclusivas para miembros.</p>
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+
+  <footer-prestige>
+    © 2025 Club de Tenis Royal — Prestigio en cada saque.
+  </footer-prestige>
+
+</body>
+</html>

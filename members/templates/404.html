@@ -1,0 +1,132 @@
+{% extends "master.html" %}
+
+{% block title %}Error 404 - Página no encontrada{% endblock %}
+
+{% block content %}
+
+<style>
+    /* 🧱 Sección de Error Sólida */
+    .error-section-solid {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        background: var(--background-cemento); /* Fondo Gris Cemento */
+        text-align: center;
+    }
+
+    .error-container-solid {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    /* Tarjeta de error - Limpia y con borde de acento */
+    .error-card-solid {
+        background: var(--line-white);
+        border: 2px solid var(--primary-red);
+        border-radius: 6px;
+        padding: 60px 40px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        animation: cardAppearSolid 0.8s ease-out;
+    }
+
+    @keyframes cardAppearSolid {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Número 404 Sólido */
+    .error-number-solid {
+        font-family: 'Roboto Slab', serif;
+        font-size: 100px;
+        font-weight: 900;
+        color: var(--secondary-blue); /* Azul Profundo */
+        line-height: 1.1;
+        margin-bottom: 5px;
+        border-bottom: 5px solid var(--accent-gold);
+        display: inline-block;
+        padding-bottom: 5px;
+        letter-spacing: 5px;
+    }
+
+    /* Icono */
+    .error-icon-solid {
+        font-size: 60px;
+        color: var(--primary-red); /* Rojo Arcilla */
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    /* Mensaje de error */
+    .error-title-solid {
+        font-size: 2.2em;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+
+    .error-message-solid {
+        font-size: 1.1em;
+        color: #555555;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    /* Botón de acción - Adaptado al estilo sólido */
+    .error-button-solid {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        background: var(--primary-red);
+        color: var(--line-white);
+        font-size: 1em;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        border: 2px solid var(--primary-red);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .error-button-solid:hover {
+        background: var(--secondary-blue);
+        border-color: var(--secondary-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .error-number-solid {
+            font-size: 80px;
+        }
+        .error-title-solid {
+            font-size: 1.8em;
+        }
+        .error-card-solid {
+            padding: 40px 30px;
+        }
+    }
+</style>
+
+<div class="error-section-solid">
+    <div class="error-container-solid">
+        <div class="error-card-solid">
+            <div class="error-icon-solid">⚠️</div>
+            <h1 class="error-number-solid">404</h1>
+            <h2 class="error-title-solid">PÁGINA NO ENCONTRADA</h2>
+            <p class="error-message-solid">
+                Lo sentimos, la dirección que buscas ha quedado **fuera de la cancha**. Por favor, vuelve a la página principal del club.
+            </p>
+            <a href="/" class="error-button-solid">
+                <span>← Volver al Inicio</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
